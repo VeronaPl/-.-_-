@@ -6,7 +6,7 @@
 
 body {
     color: black;
-    font-size: calc(var(--index) * .8);
+    font-size: calc(var(--index) * 1.1);
     font-family: 'Noto Sans', sans-serif;
     font-weight: 400;
     word-wrap: break-word;
@@ -37,18 +37,33 @@ body {
     margin-bottom: var(--gaper);
 }
 
-.main_card_btn{
-    background: #6346B4;
-    border-radius: 5px;
-    color: white;
+.input-file span{
+    cursor: pointer;
+	outline: none;
+	text-decoration: none;
     font-size: calc(var(--index) * .8);
+    vertical-align: middle;
+    color: white;
+    text-align: center;
+    background-color: #6346B4;
+    border-radius: 5px;
     width: 33%;
     height: 13%;
+    padding: 8px 20px;
     border: none;
+    transition: background-color 0.2s;
 }
-.main_card_btn:hover{
+.input-file input[type=file] {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	display: block;
+	width: 0;
+	height: 0;
+}
+.input-file:hover span{
     background-color: #A88EF0;
 }
-.main_card_btn:active{
+.input-file:active span{
     background-color: #311F63;
 }

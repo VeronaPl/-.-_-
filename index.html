@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="header">
@@ -17,9 +17,14 @@
     <div class="main">
         <div class="main_card">
             <p class="main_card_title">Выберите файл в формате CSV</p>
-            <button class="main_card_btn">Выберите файл</button>
+            <form enctype="multipart/form-data" method="post">
+                <label class="input-file">
+                    <input type="file" id="file" accept=".csv">
+                    <span>Выберите файл</span>
+                </label>
+            </form>
         </div>
     </div>
-    <script src="script.js" defer></script>
+    <script src="script.js" charset="utf-8" defer></script>
 </body>
 </html>
