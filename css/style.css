@@ -13,9 +13,31 @@ body {
     background-color: #CBCBCB;
 }
 
+.header{
+    position: absolute;
+    left: 25%;
+    display: flex;
+    align-items: center;
+    margin-top: 35px;
+    background: #FF6565; 
+    box-shadow: 2px 4px 9.899999618530273px rgba(0, 0, 0, 0.25); 
+    border-radius: 10px;
+    width: 50%;
+    height: var(--gaper);
+    color: white;
+    transition: opacity 1s;
+    visibility: hidden;
+}
+
+.header span{
+    margin: auto;
+    font-size: calc(var(--index) * .8);
+    text-align: center;
+}
+
 .main{ 
     height: 100vh;
-    width: 100vw;
+    max-width: 100vw;
     display: flex;
 }
 
