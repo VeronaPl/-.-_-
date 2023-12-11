@@ -195,4 +195,5 @@ document.getElementsByClassName("main_header_btn").onclick = resetData;
 function resetData() {
   localStorage.clear();
   localStorage.setItem("flag", "true");
+  location.reload();
 }
