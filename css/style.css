@@ -41,7 +41,7 @@ body {
     display: flex;
 }
 
-.main_card{
+.main_card, .main_table{
     background-color: white;
     width: 57%;
     height: 36%;
@@ -83,9 +83,59 @@ body {
 	width: 0;
 	height: 0;
 }
-.input-file:hover span{
+.input-file:hover span, .main_header_btn:hover{
     background-color: #A88EF0;
 }
-.input-file:active span{
+.input-file:active span, .main_header_btn:active{
     background-color: #311F63;
+}
+
+/* Table styling */
+.main_header{
+    position: relative;
+    left: 75%;
+    top: 5%;
+}
+
+.main_header_btn{
+    width: 121%;
+    cursor: pointer;
+	outline: none;
+	text-decoration: none;
+    font-size: calc(var(--index) * .8);
+    vertical-align: middle;
+    color: white;
+    text-align: center;
+    background-color: #6346B4;
+    border-radius: 5px;
+    padding: 8px 20px;
+    border: none;
+    margin-bottom: 5%;
+    transition: background-color 0.2s;
+}
+
+.main_table{
+    position: relative;
+    border-radius: 0;
+    border-top-left-radius: var(--radiuser);
+    width: 130%;
+    height: 80vh;
+    margin-left: 10%;
+    margin-top: 11%;
+    box-shadow: none;
+    justify-content: start;
+}
+
+.main_row{
+    padding: 1%;
+}
+
+.main_row title{
+    color: black; 
+    font-family: "Inter", sans-serif; 
+    font-weight: 400; 
+    word-wrap: break-word";
+}
+.main_row title::after{
+    border-right: 1px solid #C0C0C0;
 }
