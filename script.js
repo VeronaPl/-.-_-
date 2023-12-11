@@ -18,7 +18,7 @@ input.addEventListener('change', function(event) {
             <button class="main_header_btn">Загрузить новый файл</button>
         </div>
         <div class="main_table">
-            <table cellspacing="0">
+            <table cellspacing="0" id="table">
                 <tr>
                     <th class="name">Имя</th>
                     <th class="telephone">Номер телефона</th>
@@ -26,23 +26,36 @@ input.addEventListener('change', function(event) {
                     <th class="bday">Дата рождения</th>
                     <th class="address">Адрес</th>
                 </tr>
-                <tr class="row">
-                    <td class="name">Иванов Максим Викторович</td>
-                    <td class="telephone">+78000000000</td>
-                    <td class="email">test@example.com</td>
-                    <td class="bday">01.01.2001</td>
-                    <td class="address">г. Москва, ул. Тверская, д. 4</td>
-                </tr>
-                <tr class="row">
-                    <td class="name">Иванов Максим Викторович</td>
-                    <td class="telephone">+78000000000</td>
-                    <td class="email">test@example.com</td>
-                    <td class="bday">01.01.2001</td>
-                    <td class="address">г. Москва, ул. Тверская, д. 4</td>
-                </tr>
             </table>
         </div>
-        `)
+        `);
+
+        const table = document.querySelector('#table');
+        for (let i=1; i<arr.length-1; i++) {
+            let [nameInd, phoneInd, emailInd, bdayInd, ...addressInd] = arr[i];
+            let res = "";
+            for (let el in addressInd){
+                res += addressInd[el].replaceAll('\"', '') + ',';
+            }
+            addressInd = res.slice(0, -1);
+            table.insertAdjacentHTML('beforeend', `
+            <tr class="row" style="background-color: white;">
+                <td class="name">${nameInd}</td>
+                <td class="telephone">${phoneInd}</td>
+                <td class="email">${emailInd}</td>
+                <td class="bday">${bdayInd}</td>
+                <td class="address">${addressInd}</td>
+            </tr>
+            `);
+        }
+
+        main.insertAdjacentHTML('beforebegin',`
+        <style>
+            tr.row:hover{
+                background: rgba(99, 70, 180, 0.25);
+            }
+        </style>
+        `);
     };
 
     reader.onerror = () => {
@@ -54,14 +67,4 @@ input.addEventListener('change', function(event) {
         }
         
     };
-	// document.querySelector('.input-file span').next().html(file.name);
 });
-
-
-/* <div class="main_row">
-    <span class="main_row title">${name}</span>
-    <span class="main_row title">${phone}</span>
-    <span class="main_row title">${email}</span>
-    <span class="main_row title">${bday}</span>
-    <span class="main_row title">${address}</span>
-</div> */
