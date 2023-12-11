@@ -1,5 +1,5 @@
 # M.Tech_testTask
-## SPA парсер файлов с раширением .csv
+## SPA парсер файлов с раcширением .csv
 https://veronapl.github.io/M.Tech_testTask/
 
 Данные текущего сеанса пользователя сохраняются в Local storage, что позволяет 
