@@ -1,3 +1,5 @@
+// let db;
+
 const input = document.querySelector('.input-file input[type=file]');
 const main = document.querySelector('.main');
 
@@ -11,11 +13,11 @@ input.addEventListener('change', function(event) {
         let file_text = reader.result;
         arr = file_text.split('\n').map(el => el.split(','));
         let [name, phone, email, bday, address] = arr[0];
-        console.log(`name: ${name},\nphone: ${phone},\nemail: ${email},\nbday: ${bday},\naddress: ${address}`);
+        // console.log(`name: ${name},\nphone: ${phone},\nemail: ${email},\nbday: ${bday},\naddress: ${address}`);
         main.innerHTML = "";
         main.insertAdjacentHTML('afterbegin', `
         <div class="main_header">
-            <button class="main_header_btn">Загрузить новый файл</button>
+            <button class="main_header_btn" onclick="resetData()">Загрузить новый файл</button>
         </div>
         <div class="main_table">
             <table cellspacing="0" id="table">
@@ -47,7 +49,60 @@ input.addEventListener('change', function(event) {
                 <td class="address">${addressInd}</td>
             </tr>
             `);
+
+            // localStorage.setItem('name', nameInd);
+            // console.log(localStorage.getItem('name'));
+            const user = {
+                name: nameInd,
+                phone: phoneInd,
+                email: emailInd,
+                bday: bdayInd,
+                address: addressInd
+            };
+            localStorage.setItem(`${i}`, JSON.stringify(user));
+            console.log(JSON.parse(localStorage.getItem(`${i}`)));
         }
+
+        // // Открываем нашу базу данных; она создаётся, если её ещё не существует
+        // let request = window.indexedDB.open("notes", 1);
+        // // обработчик onerror означает, что база данных не открылась успешно
+        // request.onerror = function () {
+        //     console.log("Database failed to open");
+        // };
+  
+        // // обработчик onsuccess означает, что база данных открыта успешно
+        // request.onsuccess = function () {
+        //     console.log("Database opened successfully");
+  
+        //     // Сохраните открытую базу данных в переменной db. Она будет использована ниже
+        //     db = request.result;
+  
+        //     // Выполните функцию displayData() для отображения тех заметок, которые уже находятся в IDB
+        //     displayData();
+        // };
+
+        // // Настройка таблиц баз данных, если это ещё не было сделано
+        // request.onupgradeneeded = function (e) {
+        //     // Захват ссылки на открытую базу данных
+        //     let db = e.target.result;
+  
+        //     // Создайте objectStore, где мы сможем хранить заметки (фактически как единая таблица)
+        //     // включая автоматически увеличивающееся значение ключа
+        //     let objectStore = db.createObjectStore("notes", {
+        //         keyPath: "id",
+        //         autoIncrement: true,
+        //     });
+  
+        //     // Обозначьте, какие элементы данных будет содержать objectStore
+        //     objectStore.createIndex("nameInd", "nameInd", { unique: false });
+        //     objectStore.createIndex("phoneInd", "phoneInd", { unique: false });
+        //     objectStore.createIndex("emailInd", "emailInd", { unique: false });
+        //     objectStore.createIndex("bdayInd", "bdayInd", { unique: false });
+        //     objectStore.createIndex("addressInd", "addressInd", { unique: false });
+  
+        //     console.log("Database setup complete");
+        // };
+
 
         main.insertAdjacentHTML('beforebegin',`
         <style>
@@ -68,3 +123,8 @@ input.addEventListener('change', function(event) {
         
     };
 });
+
+document.getElementsByClassName('main_header_btn').onclick = resetData;
+function resetData() {
+    localStorage.clear();
+};
